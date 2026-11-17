@@ -1,0 +1,1360 @@
+{
+  "meta": {
+    "stream": "nrwbank_clickstream",
+    "version": "1.0",
+    "simulated": true,
+    "generated_at": "2026-11-17T09:38:30+00:00",
+    "timezone": "Europe/Berlin",
+    "period": {
+      "start": "2026-11-16",
+      "end": "2026-11-16",
+      "days": 1
+    },
+    "sources": {
+      "website": {
+        "domain": "www.nrwbank.de",
+        "tracked_pages": 22
+      },
+      "instagram": {
+        "account": "@nrw.bank",
+        "profile_url": "https://www.instagram.com/nrw.bank/",
+        "posts": [
+          {
+            "shortcode": "DfrGS2mkw__",
+            "media_type": "reel",
+            "published": "2026-11-12",
+            "pinned": false,
+            "source": "observed",
+            "url": "https://www.instagram.com/nrw.bank/reel/DfrGS2mkw__/"
+          },
+          {
+            "shortcode": "DfpPZlqikRE",
+            "media_type": "photo",
+            "published": "2026-11-12",
+            "pinned": false,
+            "source": "observed",
+            "url": "https://www.instagram.com/nrw.bank/p/DfpPZlqikRE/"
+          },
+          {
+            "shortcode": "DfoqtT8Co8c",
+            "media_type": "photo",
+            "published": "2026-11-12",
+            "pinned": false,
+            "source": "observed",
+            "url": "https://www.instagram.com/nrw.bank/p/DfoqtT8Co8c/"
+          },
+          {
+            "shortcode": "Dfmc9d9jfZY",
+            "media_type": "photo",
+            "published": "2026-11-11",
+            "pinned": false,
+            "source": "observed",
+            "url": "https://www.instagram.com/nrw.bank/p/Dfmc9d9jfZY/"
+          },
+          {
+            "shortcode": "DfkFuWoj1Aj",
+            "media_type": "photo",
+            "published": "2026-11-10",
+            "pinned": false,
+            "source": "observed_date_estimated",
+            "url": "https://www.instagram.com/nrw.bank/p/DfkFuWoj1Aj/"
+          },
+          {
+            "shortcode": "DfhVe-2DzAB",
+            "media_type": "photo",
+            "published": "2026-11-07",
+            "pinned": false,
+            "source": "observed_date_estimated",
+            "url": "https://www.instagram.com/nrw.bank/p/DfhVe-2DzAB/"
+          },
+          {
+            "shortcode": "Dfg8-q6EUli",
+            "media_type": "photo",
+            "published": "2026-11-06",
+            "pinned": false,
+            "source": "observed_date_estimated",
+            "url": "https://www.instagram.com/nrw.bank/p/Dfg8-q6EUli/"
+          },
+          {
+            "shortcode": "Dfbpn_BFB4d",
+            "media_type": "reel",
+            "published": "2026-11-05",
+            "pinned": false,
+            "source": "observed_date_estimated",
+            "url": "https://www.instagram.com/nrw.bank/reel/Dfbpn_BFB4d/"
+          },
+          {
+            "shortcode": "DfZ6qRCiPIM",
+            "media_type": "reel",
+            "published": "2026-11-04",
+            "pinned": false,
+            "source": "observed_date_estimated",
+            "url": "https://www.instagram.com/nrw.bank/reel/DfZ6qRCiPIM/"
+          },
+          {
+            "shortcode": "DfUKviTACn1",
+            "media_type": "photo",
+            "published": "2026-11-03",
+            "pinned": false,
+            "source": "observed_date_estimated",
+            "url": "https://www.instagram.com/nrw.bank/p/DfUKviTACn1/"
+          },
+          {
+            "shortcode": "SIM20261102012",
+            "media_type": "photo",
+            "published": "2026-11-02",
+            "pinned": false,
+            "source": "simulated",
+            "topic": "Förderprogramm vorgestellt",
+            "url": null
+          },
+          {
+            "shortcode": "SIM20261030011",
+            "media_type": "photo",
+            "published": "2026-10-30",
+            "pinned": false,
+            "source": "simulated",
+            "topic": "Innovationspartner",
+            "url": null
+          },
+          {
+            "shortcode": "SIM20261029010",
+            "media_type": "reel",
+            "published": "2026-10-29",
+            "pinned": false,
+            "source": "simulated",
+            "topic": "Nachhaltigkeit",
+            "url": null
+          },
+          {
+            "shortcode": "SIM20261028009",
+            "media_type": "carousel",
+            "published": "2026-10-28",
+            "pinned": false,
+            "source": "simulated",
+            "topic": "Nachhaltigkeit",
+            "url": null
+          },
+          {
+            "shortcode": "SIM20261027008",
+            "media_type": "reel",
+            "published": "2026-10-27",
+            "pinned": false,
+            "source": "simulated",
+            "topic": "Veranstaltungshinweis",
+            "url": null
+          },
+          {
+            "shortcode": "SIM20261026007",
+            "media_type": "photo",
+            "published": "2026-10-26",
+            "pinned": false,
+            "source": "simulated",
+            "topic": "Förderprogramm vorgestellt",
+            "url": null
+          },
+          {
+            "shortcode": "SIM20261023006",
+            "media_type": "reel",
+            "published": "2026-10-23",
+            "pinned": false,
+            "source": "simulated",
+            "topic": "Team & Kultur",
+            "url": null
+          },
+          {
+            "shortcode": "SIM20261022005",
+            "media_type": "photo",
+            "published": "2026-10-22",
+            "pinned": false,
+            "source": "simulated",
+            "topic": "Gründer:innen-Porträt",
+            "url": null
+          },
+          {
+            "shortcode": "SIM20261021003",
+            "media_type": "photo",
+            "published": "2026-10-21",
+            "pinned": false,
+            "source": "simulated",
+            "topic": "Kunst bei der NRW.BANK",
+            "url": null
+          },
+          {
+            "shortcode": "SIM20261021004",
+            "media_type": "photo",
+            "published": "2026-10-21",
+            "pinned": false,
+            "source": "simulated",
+            "topic": "Team & Kultur",
+            "url": null
+          },
+          {
+            "shortcode": "SIM20261020002",
+            "media_type": "reel",
+            "published": "2026-10-20",
+            "pinned": false,
+            "source": "simulated",
+            "topic": "Nachhaltigkeit",
+            "url": null
+          },
+          {
+            "shortcode": "SIM20261019001",
+            "media_type": "reel",
+            "published": "2026-10-19",
+            "pinned": false,
+            "source": "simulated",
+            "topic": "Pressemitteilung",
+            "url": null
+          },
+          {
+            "shortcode": "DaR5gYaEVSL",
+            "media_type": "reel",
+            "published": "2026-07-01",
+            "pinned": true,
+            "source": "observed",
+            "url": "https://www.instagram.com/nrw.bank/reel/DaR5gYaEVSL/"
+          },
+          {
+            "shortcode": "DTM0fmrDFsv",
+            "media_type": "photo",
+            "published": "2026-01-06",
+            "pinned": true,
+            "source": "observed",
+            "url": "https://www.instagram.com/nrw.bank/p/DTM0fmrDFsv/"
+          }
+        ]
+      }
+    },
+    "notes": "All metrics are simulated. Page URLs and post shortcodes are real as of 2026-11-17; publish dates for older posts are estimated. Posts with source 'simulated' (shortcode SIM…) are invented to fill the period before the oldest observed post and have no URL."
+  },
+  "days": [
+    {
+      "date": "2026-11-16",
+      "weekday": "Monday",
+      "website": {
+        "totals": {
+          "pageviews": 10741,
+          "sessions": 4111,
+          "unique_visitors": 3379,
+          "clicks": 12783,
+          "bounce_rate": 0.407,
+          "avg_session_duration_s": 182.3
+        },
+        "traffic_sources": {
+          "organic_search": 1939,
+          "direct": 1006,
+          "referral": 576,
+          "social": 275,
+          "paid_search": 198,
+          "email": 117
+        },
+        "social_referrals": {
+          "instagram": 125
+        },
+        "devices": {
+          "desktop": 2369,
+          "mobile": 1507,
+          "tablet": 235
+        },
+        "clicks_by_hour": [
+          {
+            "hour": 0,
+            "clicks": 89
+          },
+          {
+            "hour": 1,
+            "clicks": 51
+          },
+          {
+            "hour": 2,
+            "clicks": 41
+          },
+          {
+            "hour": 3,
+            "clicks": 44
+          },
+          {
+            "hour": 4,
+            "clicks": 52
+          },
+          {
+            "hour": 5,
+            "clicks": 105
+          },
+          {
+            "hour": 6,
+            "clicks": 240
+          },
+          {
+            "hour": 7,
+            "clicks": 365
+          },
+          {
+            "hour": 8,
+            "clicks": 716
+          },
+          {
+            "hour": 9,
+            "clicks": 1091
+          },
+          {
+            "hour": 10,
+            "clicks": 1186
+          },
+          {
+            "hour": 11,
+            "clicks": 876
+          },
+          {
+            "hour": 12,
+            "clicks": 765
+          },
+          {
+            "hour": 13,
+            "clicks": 830
+          },
+          {
+            "hour": 14,
+            "clicks": 1088
+          },
+          {
+            "hour": 15,
+            "clicks": 1026
+          },
+          {
+            "hour": 16,
+            "clicks": 932
+          },
+          {
+            "hour": 17,
+            "clicks": 670
+          },
+          {
+            "hour": 18,
+            "clicks": 526
+          },
+          {
+            "hour": 19,
+            "clicks": 583
+          },
+          {
+            "hour": 20,
+            "clicks": 533
+          },
+          {
+            "hour": 21,
+            "clicks": 447
+          },
+          {
+            "hour": 22,
+            "clicks": 352
+          },
+          {
+            "hour": 23,
+            "clicks": 175
+          }
+        ],
+        "pages": [
+          {
+            "url": "https://www.nrwbank.de/de/",
+            "title": "Startseite",
+            "section": "home",
+            "pageviews": 2167,
+            "unique_pageviews": 1588,
+            "clicks": 2460,
+            "clicks_by_target": {
+              "navigation": 1407,
+              "cta_foerderprodukt": 177,
+              "download_pdf": 198,
+              "rechner_start": 105,
+              "kontakt": 411,
+              "external_link": 162
+            },
+            "avg_time_on_page_s": 136.9,
+            "exit_rate": 0.301
+          },
+          {
+            "url": "https://www.nrwbank.de/de/foerderung/foerderprodukte/",
+            "title": "Förderprodukte",
+            "section": "foerderung",
+            "pageviews": 1519,
+            "unique_pageviews": 1270,
+            "clicks": 1954,
+            "clicks_by_target": {
+              "navigation": 818,
+              "cta_foerderprodukt": 526,
+              "download_pdf": 323,
+              "rechner_start": 50,
+              "kontakt": 164,
+              "external_link": 73
+            },
+            "avg_time_on_page_s": 58.3,
+            "exit_rate": 0.182
+          },
+          {
+            "url": "https://www.nrwbank.de/de/privatpersonen/wohneigentum/",
+            "title": "Wohneigentum fördern",
+            "section": "privatpersonen",
+            "pageviews": 1120,
+            "unique_pageviews": 822,
+            "clicks": 1190,
+            "clicks_by_target": {
+              "navigation": 544,
+              "cta_foerderprodukt": 364,
+              "download_pdf": 67,
+              "rechner_start": 33,
+              "kontakt": 128,
+              "external_link": 54
+            },
+            "avg_time_on_page_s": 132.7,
+            "exit_rate": 0.409
+          },
+          {
+            "url": "https://www.nrwbank.de/de/privatpersonen/",
+            "title": "Privatpersonen",
+            "section": "privatpersonen",
+            "pageviews": 792,
+            "unique_pageviews": 589,
+            "clicks": 1050,
+            "clicks_by_target": {
+              "navigation": 523,
+              "cta_foerderprodukt": 264,
+              "download_pdf": 57,
+              "rechner_start": 34,
+              "kontakt": 122,
+              "external_link": 50
+            },
+            "avg_time_on_page_s": 103.7,
+            "exit_rate": 0.487
+          },
+          {
+            "url": "https://www.nrwbank.de/de/unternehmen/",
+            "title": "Unternehmen",
+            "section": "unternehmen",
+            "pageviews": 600,
+            "unique_pageviews": 508,
+            "clicks": 706,
+            "clicks_by_target": {
+              "navigation": 341,
+              "cta_foerderprodukt": 193,
+              "download_pdf": 38,
+              "rechner_start": 21,
+              "kontakt": 77,
+              "external_link": 36
+            },
+            "avg_time_on_page_s": 128.2,
+            "exit_rate": 0.31
+          },
+          {
+            "url": "https://www.nrwbank.de/de/gruender/",
+            "title": "Gründer",
+            "section": "gruender",
+            "pageviews": 580,
+            "unique_pageviews": 436,
+            "clicks": 837,
+            "clicks_by_target": {
+              "navigation": 364,
+              "cta_foerderprodukt": 240,
+              "download_pdf": 48,
+              "rechner_start": 23,
+              "kontakt": 115,
+              "external_link": 47
+            },
+            "avg_time_on_page_s": 61.2,
+            "exit_rate": 0.412
+          },
+          {
+            "url": "https://www.nrwbank.de/de/foerderung/konditionen/",
+            "title": "Konditionen",
+            "section": "foerderung",
+            "pageviews": 487,
+            "unique_pageviews": 418,
+            "clicks": 513,
+            "clicks_by_target": {
+              "navigation": 225,
+              "cta_foerderprodukt": 118,
+              "download_pdf": 78,
+              "rechner_start": 12,
+              "kontakt": 56,
+              "external_link": 24
+            },
+            "avg_time_on_page_s": 73.5,
+            "exit_rate": 0.175
+          },
+          {
+            "url": "https://www.nrwbank.de/de/die-nrw-bank/karriere/",
+            "title": "Karriere",
+            "section": "nrw-bank",
+            "pageviews": 413,
+            "unique_pageviews": 311,
+            "clicks": 392,
+            "clicks_by_target": {
+              "navigation": 216,
+              "cta_foerderprodukt": 19,
+              "download_pdf": 73,
+              "rechner_start": 14,
+              "kontakt": 50,
+              "external_link": 20
+            },
+            "avg_time_on_page_s": 115.2,
+            "exit_rate": 0.473
+          },
+          {
+            "url": "https://www.nrwbank.de/de/info-und-service/tools-und-rechner/",
+            "title": "Tools und Rechner",
+            "section": "service",
+            "pageviews": 389,
+            "unique_pageviews": 334,
+            "clicks": 454,
+            "clicks_by_target": {
+              "navigation": 234,
+              "cta_foerderprodukt": 27,
+              "download_pdf": 31,
+              "rechner_start": 79,
+              "kontakt": 59,
+              "external_link": 24
+            },
+            "avg_time_on_page_s": 86.8,
+            "exit_rate": 0.257
+          },
+          {
+            "url": "https://www.nrwbank.de/de/info-und-service/tools-und-rechner/chancenpruefer/",
+            "title": "Chancenprüfer",
+            "section": "service",
+            "pageviews": 331,
+            "unique_pageviews": 243,
+            "clicks": 446,
+            "clicks_by_target": {
+              "navigation": 220,
+              "cta_foerderprodukt": 22,
+              "download_pdf": 31,
+              "rechner_start": 100,
+              "kontakt": 50,
+              "external_link": 23
+            },
+            "avg_time_on_page_s": 45.5,
+            "exit_rate": 0.515
+          },
+          {
+            "url": "https://www.nrwbank.de/de/foerderung/formulare/",
+            "title": "Formulare",
+            "section": "foerderung",
+            "pageviews": 325,
+            "unique_pageviews": 249,
+            "clicks": 343,
+            "clicks_by_target": {
+              "navigation": 151,
+              "cta_foerderprodukt": 81,
+              "download_pdf": 54,
+              "rechner_start": 8,
+              "kontakt": 36,
+              "external_link": 13
+            },
+            "avg_time_on_page_s": 129.1,
+            "exit_rate": 0.494
+          },
+          {
+            "url": "https://www.nrwbank.de/de/privatpersonen/wohneigentum-gestalten/wohneigentum-modernisieren/",
+            "title": "Wohneigentum modernisieren",
+            "section": "privatpersonen",
+            "pageviews": 324,
+            "unique_pageviews": 246,
+            "clicks": 489,
+            "clicks_by_target": {
+              "navigation": 233,
+              "cta_foerderprodukt": 139,
+              "download_pdf": 24,
+              "rechner_start": 15,
+              "kontakt": 54,
+              "external_link": 24
+            },
+            "avg_time_on_page_s": 86.0,
+            "exit_rate": 0.15
+          },
+          {
+            "url": "https://www.nrwbank.de/de/unternehmen/wohnwirtschaft/wohnungen-bauen/",
+            "title": "Wohnungen bauen",
+            "section": "unternehmen",
+            "pageviews": 296,
+            "unique_pageviews": 215,
+            "clicks": 367,
+            "clicks_by_target": {
+              "navigation": 177,
+              "cta_foerderprodukt": 107,
+              "download_pdf": 18,
+              "rechner_start": 10,
+              "kontakt": 40,
+              "external_link": 15
+            },
+            "avg_time_on_page_s": 125.3,
+            "exit_rate": 0.319
+          },
+          {
+            "url": "https://www.nrwbank.de/de/info-und-service/kontakt/",
+            "title": "Kontakt",
+            "section": "service",
+            "pageviews": 296,
+            "unique_pageviews": 250,
+            "clicks": 291,
+            "clicks_by_target": {
+              "navigation": 173,
+              "cta_foerderprodukt": 19,
+              "download_pdf": 23,
+              "rechner_start": 11,
+              "kontakt": 46,
+              "external_link": 19
+            },
+            "avg_time_on_page_s": 132.5,
+            "exit_rate": 0.232
+          },
+          {
+            "url": "https://www.nrwbank.de/de/oeffentliche-kunden/",
+            "title": "Öffentliche Kunden",
+            "section": "oeffentliche-kunden",
+            "pageviews": 216,
+            "unique_pageviews": 171,
+            "clicks": 226,
+            "clicks_by_target": {
+              "navigation": 143,
+              "cta_foerderprodukt": 12,
+              "download_pdf": 15,
+              "rechner_start": 9,
+              "kontakt": 34,
+              "external_link": 13
+            },
+            "avg_time_on_page_s": 84.5,
+            "exit_rate": 0.198
+          },
+          {
+            "url": "https://www.nrwbank.de/de/unternehmen/investitionen-im-mittelstand/digitalisierung/",
+            "title": "Digitalisierung im Mittelstand",
+            "section": "unternehmen",
+            "pageviews": 215,
+            "unique_pageviews": 155,
+            "clicks": 242,
+            "clicks_by_target": {
+              "navigation": 118,
+              "cta_foerderprodukt": 70,
+              "download_pdf": 14,
+              "rechner_start": 6,
+              "kontakt": 22,
+              "external_link": 12
+            },
+            "avg_time_on_page_s": 133.9,
+            "exit_rate": 0.184
+          },
+          {
+            "url": "https://www.nrwbank.de/de/info-und-service/veranstaltungen/",
+            "title": "Veranstaltungen",
+            "section": "service",
+            "pageviews": 161,
+            "unique_pageviews": 135,
+            "clicks": 183,
+            "clicks_by_target": {
+              "navigation": 112,
+              "cta_foerderprodukt": 11,
+              "download_pdf": 15,
+              "rechner_start": 7,
+              "kontakt": 27,
+              "external_link": 11
+            },
+            "avg_time_on_page_s": 131.2,
+            "exit_rate": 0.327
+          },
+          {
+            "url": "https://www.nrwbank.de/de/die-nrw-bank/investor-relations/",
+            "title": "Investor Relations",
+            "section": "nrw-bank",
+            "pageviews": 155,
+            "unique_pageviews": 113,
+            "clicks": 160,
+            "clicks_by_target": {
+              "navigation": 82,
+              "cta_foerderprodukt": 8,
+              "download_pdf": 33,
+              "rechner_start": 6,
+              "kontakt": 21,
+              "external_link": 10
+            },
+            "avg_time_on_page_s": 36.3,
+            "exit_rate": 0.311
+          },
+          {
+            "url": "https://www.nrwbank.de/de/info-und-service/presseinformationen/",
+            "title": "Presseinformationen",
+            "section": "presse",
+            "pageviews": 129,
+            "unique_pageviews": 102,
+            "clicks": 193,
+            "clicks_by_target": {
+              "navigation": 89,
+              "cta_foerderprodukt": 12,
+              "download_pdf": 46,
+              "rechner_start": 7,
+              "kontakt": 28,
+              "external_link": 11
+            },
+            "avg_time_on_page_s": 44.1,
+            "exit_rate": 0.344
+          },
+          {
+            "url": "https://www.nrwbank.de/de/mut-der-gruendungspreis-nrw/",
+            "title": "MUT – Der Gründungspreis NRW",
+            "section": "gruender",
+            "pageviews": 106,
+            "unique_pageviews": 83,
+            "clicks": 138,
+            "clicks_by_target": {
+              "navigation": 71,
+              "cta_foerderprodukt": 34,
+              "download_pdf": 9,
+              "rechner_start": 3,
+              "kontakt": 14,
+              "external_link": 7
+            },
+            "avg_time_on_page_s": 102.6,
+            "exit_rate": 0.244
+          },
+          {
+            "url": "https://www.nrwbank.de/de/info-und-service/presseinformationen/2026/261112_PI_deepinvoice.html",
+            "title": "PI: deepinvoice",
+            "section": "presse",
+            "pageviews": 75,
+            "unique_pageviews": 58,
+            "clicks": 78,
+            "clicks_by_target": {
+              "navigation": 37,
+              "cta_foerderprodukt": 4,
+              "download_pdf": 20,
+              "rechner_start": 2,
+              "kontakt": 11,
+              "external_link": 4
+            },
+            "avg_time_on_page_s": 73.6,
+            "exit_rate": 0.533
+          },
+          {
+            "url": "https://www.nrwbank.de/de/info-und-service/presseinformationen/2026/261109_PI_SRTD-Biotech.html",
+            "title": "PI: SRTD Biotech",
+            "section": "presse",
+            "pageviews": 45,
+            "unique_pageviews": 35,
+            "clicks": 71,
+            "clicks_by_target": {
+              "navigation": 39,
+              "cta_foerderprodukt": 3,
+              "download_pdf": 14,
+              "rechner_start": 2,
+              "kontakt": 9,
+              "external_link": 4
+            },
+            "avg_time_on_page_s": 111.0,
+            "exit_rate": 0.173
+          }
+        ]
+      },
+      "instagram": {
+        "totals": {
+          "followers": 5313,
+          "posts_published": 0,
+          "likes": 98,
+          "comments": 8,
+          "clicks": 22,
+          "impressions": 1646,
+          "reach": 937,
+          "website_clicks": 3
+        },
+        "interactions_by_hour": [
+          {
+            "hour": 0,
+            "likes": 1
+          },
+          {
+            "hour": 1,
+            "likes": 0
+          },
+          {
+            "hour": 2,
+            "likes": 0
+          },
+          {
+            "hour": 3,
+            "likes": 0
+          },
+          {
+            "hour": 4,
+            "likes": 0
+          },
+          {
+            "hour": 5,
+            "likes": 1
+          },
+          {
+            "hour": 6,
+            "likes": 3
+          },
+          {
+            "hour": 7,
+            "likes": 4
+          },
+          {
+            "hour": 8,
+            "likes": 5
+          },
+          {
+            "hour": 9,
+            "likes": 4
+          },
+          {
+            "hour": 10,
+            "likes": 4
+          },
+          {
+            "hour": 11,
+            "likes": 5
+          },
+          {
+            "hour": 12,
+            "likes": 6
+          },
+          {
+            "hour": 13,
+            "likes": 5
+          },
+          {
+            "hour": 14,
+            "likes": 4
+          },
+          {
+            "hour": 15,
+            "likes": 4
+          },
+          {
+            "hour": 16,
+            "likes": 5
+          },
+          {
+            "hour": 17,
+            "likes": 6
+          },
+          {
+            "hour": 18,
+            "likes": 7
+          },
+          {
+            "hour": 19,
+            "likes": 8
+          },
+          {
+            "hour": 20,
+            "likes": 10
+          },
+          {
+            "hour": 21,
+            "likes": 8
+          },
+          {
+            "hour": 22,
+            "likes": 5
+          },
+          {
+            "hour": 23,
+            "likes": 3
+          }
+        ],
+        "posts": [
+          {
+            "shortcode": "DfrGS2mkw__",
+            "url": "https://www.instagram.com/nrw.bank/reel/DfrGS2mkw__/",
+            "media_type": "reel",
+            "source": "observed",
+            "post_age_days": 4,
+            "likes": 23,
+            "comments": 1,
+            "likes_total": 269,
+            "comments_total": 13,
+            "saves": 0,
+            "shares": 1,
+            "impressions": 319,
+            "reach": 236,
+            "clicks": {
+              "profile_visits": 3,
+              "link_in_bio": 1,
+              "tagged_account": 0
+            },
+            "plays": 392
+          },
+          {
+            "shortcode": "DfpPZlqikRE",
+            "url": "https://www.instagram.com/nrw.bank/p/DfpPZlqikRE/",
+            "media_type": "photo",
+            "source": "observed",
+            "post_age_days": 4,
+            "likes": 20,
+            "comments": 2,
+            "likes_total": 247,
+            "comments_total": 13,
+            "saves": 1,
+            "shares": 1,
+            "impressions": 201,
+            "reach": 158,
+            "clicks": {
+              "profile_visits": 3,
+              "link_in_bio": 0,
+              "tagged_account": 0
+            }
+          },
+          {
+            "shortcode": "DfoqtT8Co8c",
+            "url": "https://www.instagram.com/nrw.bank/p/DfoqtT8Co8c/",
+            "media_type": "photo",
+            "source": "observed",
+            "post_age_days": 4,
+            "likes": 26,
+            "comments": 2,
+            "likes_total": 280,
+            "comments_total": 14,
+            "saves": 2,
+            "shares": 1,
+            "impressions": 281,
+            "reach": 220,
+            "clicks": {
+              "profile_visits": 8,
+              "link_in_bio": 2,
+              "tagged_account": 0
+            }
+          },
+          {
+            "shortcode": "Dfmc9d9jfZY",
+            "url": "https://www.instagram.com/nrw.bank/p/Dfmc9d9jfZY/",
+            "media_type": "photo",
+            "source": "observed",
+            "post_age_days": 5,
+            "likes": 11,
+            "comments": 0,
+            "likes_total": 292,
+            "comments_total": 14,
+            "saves": 0,
+            "shares": 0,
+            "impressions": 139,
+            "reach": 104,
+            "clicks": {
+              "profile_visits": 3,
+              "link_in_bio": 0,
+              "tagged_account": 0
+            }
+          },
+          {
+            "shortcode": "DfkFuWoj1Aj",
+            "url": "https://www.instagram.com/nrw.bank/p/DfkFuWoj1Aj/",
+            "media_type": "photo",
+            "source": "observed_date_estimated",
+            "post_age_days": 6,
+            "likes": 7,
+            "comments": 1,
+            "likes_total": 279,
+            "comments_total": 14,
+            "saves": 0,
+            "shares": 0,
+            "impressions": 128,
+            "reach": 98,
+            "clicks": {
+              "profile_visits": 1,
+              "link_in_bio": 0,
+              "tagged_account": 0
+            }
+          },
+          {
+            "shortcode": "DfhVe-2DzAB",
+            "url": "https://www.instagram.com/nrw.bank/p/DfhVe-2DzAB/",
+            "media_type": "photo",
+            "source": "observed_date_estimated",
+            "post_age_days": 9,
+            "likes": 1,
+            "comments": 0,
+            "likes_total": 128,
+            "comments_total": 6,
+            "saves": 0,
+            "shares": 0,
+            "impressions": 35,
+            "reach": 28,
+            "clicks": {
+              "profile_visits": 0,
+              "link_in_bio": 0,
+              "tagged_account": 0
+            }
+          },
+          {
+            "shortcode": "Dfg8-q6EUli",
+            "url": "https://www.instagram.com/nrw.bank/p/Dfg8-q6EUli/",
+            "media_type": "photo",
+            "source": "observed_date_estimated",
+            "post_age_days": 10,
+            "likes": 2,
+            "comments": 0,
+            "likes_total": 309,
+            "comments_total": 15,
+            "saves": 0,
+            "shares": 0,
+            "impressions": 50,
+            "reach": 38,
+            "clicks": {
+              "profile_visits": 0,
+              "link_in_bio": 0,
+              "tagged_account": 0
+            }
+          },
+          {
+            "shortcode": "Dfbpn_BFB4d",
+            "url": "https://www.instagram.com/nrw.bank/reel/Dfbpn_BFB4d/",
+            "media_type": "reel",
+            "source": "observed_date_estimated",
+            "post_age_days": 11,
+            "likes": 1,
+            "comments": 0,
+            "likes_total": 301,
+            "comments_total": 15,
+            "saves": 0,
+            "shares": 0,
+            "impressions": 30,
+            "reach": 23,
+            "clicks": {
+              "profile_visits": 0,
+              "link_in_bio": 0,
+              "tagged_account": 0
+            },
+            "plays": 43
+          },
+          {
+            "shortcode": "DfZ6qRCiPIM",
+            "url": "https://www.instagram.com/nrw.bank/reel/DfZ6qRCiPIM/",
+            "media_type": "reel",
+            "source": "observed_date_estimated",
+            "post_age_days": 12,
+            "likes": 1,
+            "comments": 0,
+            "likes_total": 344,
+            "comments_total": 17,
+            "saves": 0,
+            "shares": 0,
+            "impressions": 23,
+            "reach": 17,
+            "clicks": {
+              "profile_visits": 0,
+              "link_in_bio": 0,
+              "tagged_account": 0
+            },
+            "plays": 29
+          },
+          {
+            "shortcode": "DfUKviTACn1",
+            "url": "https://www.instagram.com/nrw.bank/p/DfUKviTACn1/",
+            "media_type": "photo",
+            "source": "observed_date_estimated",
+            "post_age_days": 13,
+            "likes": 0,
+            "comments": 0,
+            "likes_total": 302,
+            "comments_total": 15,
+            "saves": 0,
+            "shares": 0,
+            "impressions": 25,
+            "reach": 18,
+            "clicks": {
+              "profile_visits": 0,
+              "link_in_bio": 0,
+              "tagged_account": 0
+            }
+          },
+          {
+            "shortcode": "SIM20261102012",
+            "url": null,
+            "media_type": "photo",
+            "source": "simulated",
+            "post_age_days": 14,
+            "likes": 0,
+            "comments": 0,
+            "likes_total": 160,
+            "comments_total": 8,
+            "saves": 0,
+            "shares": 0,
+            "impressions": 20,
+            "reach": 14,
+            "clicks": {
+              "profile_visits": 0,
+              "link_in_bio": 0,
+              "tagged_account": 0
+            }
+          },
+          {
+            "shortcode": "SIM20261030011",
+            "url": null,
+            "media_type": "photo",
+            "source": "simulated",
+            "post_age_days": 17,
+            "likes": 0,
+            "comments": 0,
+            "likes_total": 309,
+            "comments_total": 15,
+            "saves": 0,
+            "shares": 0,
+            "impressions": 29,
+            "reach": 23,
+            "clicks": {
+              "profile_visits": 0,
+              "link_in_bio": 0,
+              "tagged_account": 0
+            }
+          },
+          {
+            "shortcode": "SIM20261029010",
+            "url": null,
+            "media_type": "reel",
+            "source": "simulated",
+            "post_age_days": 18,
+            "likes": 0,
+            "comments": 0,
+            "likes_total": 269,
+            "comments_total": 13,
+            "saves": 0,
+            "shares": 0,
+            "impressions": 8,
+            "reach": 5,
+            "clicks": {
+              "profile_visits": 0,
+              "link_in_bio": 0,
+              "tagged_account": 0
+            },
+            "plays": 11
+          },
+          {
+            "shortcode": "SIM20261028009",
+            "url": null,
+            "media_type": "carousel",
+            "source": "simulated",
+            "post_age_days": 19,
+            "likes": 0,
+            "comments": 0,
+            "likes_total": 241,
+            "comments_total": 12,
+            "saves": 0,
+            "shares": 0,
+            "impressions": 32,
+            "reach": 26,
+            "clicks": {
+              "profile_visits": 0,
+              "link_in_bio": 0,
+              "tagged_account": 0
+            }
+          },
+          {
+            "shortcode": "SIM20261027008",
+            "url": null,
+            "media_type": "reel",
+            "source": "simulated",
+            "post_age_days": 20,
+            "likes": 0,
+            "comments": 0,
+            "likes_total": 326,
+            "comments_total": 16,
+            "saves": 0,
+            "shares": 0,
+            "impressions": 22,
+            "reach": 16,
+            "clicks": {
+              "profile_visits": 0,
+              "link_in_bio": 0,
+              "tagged_account": 0
+            },
+            "plays": 25
+          },
+          {
+            "shortcode": "SIM20261026007",
+            "url": null,
+            "media_type": "photo",
+            "source": "simulated",
+            "post_age_days": 21,
+            "likes": 0,
+            "comments": 0,
+            "likes_total": 207,
+            "comments_total": 10,
+            "saves": 0,
+            "shares": 0,
+            "impressions": 34,
+            "reach": 25,
+            "clicks": {
+              "profile_visits": 0,
+              "link_in_bio": 0,
+              "tagged_account": 0
+            }
+          },
+          {
+            "shortcode": "SIM20261023006",
+            "url": null,
+            "media_type": "reel",
+            "source": "simulated",
+            "post_age_days": 24,
+            "likes": 1,
+            "comments": 1,
+            "likes_total": 575,
+            "comments_total": 29,
+            "saves": 0,
+            "shares": 0,
+            "impressions": 39,
+            "reach": 29,
+            "clicks": {
+              "profile_visits": 0,
+              "link_in_bio": 0,
+              "tagged_account": 0
+            },
+            "plays": 47
+          },
+          {
+            "shortcode": "SIM20261022005",
+            "url": null,
+            "media_type": "photo",
+            "source": "simulated",
+            "post_age_days": 25,
+            "likes": 0,
+            "comments": 0,
+            "likes_total": 170,
+            "comments_total": 8,
+            "saves": 0,
+            "shares": 0,
+            "impressions": 30,
+            "reach": 25,
+            "clicks": {
+              "profile_visits": 0,
+              "link_in_bio": 0,
+              "tagged_account": 0
+            }
+          },
+          {
+            "shortcode": "SIM20261021003",
+            "url": null,
+            "media_type": "photo",
+            "source": "simulated",
+            "post_age_days": 26,
+            "likes": 0,
+            "comments": 0,
+            "likes_total": 251,
+            "comments_total": 12,
+            "saves": 0,
+            "shares": 0,
+            "impressions": 16,
+            "reach": 11,
+            "clicks": {
+              "profile_visits": 0,
+              "link_in_bio": 0,
+              "tagged_account": 0
+            }
+          },
+          {
+            "shortcode": "SIM20261021004",
+            "url": null,
+            "media_type": "photo",
+            "source": "simulated",
+            "post_age_days": 26,
+            "likes": 0,
+            "comments": 0,
+            "likes_total": 289,
+            "comments_total": 14,
+            "saves": 0,
+            "shares": 0,
+            "impressions": 39,
+            "reach": 28,
+            "clicks": {
+              "profile_visits": 0,
+              "link_in_bio": 0,
+              "tagged_account": 0
+            }
+          },
+          {
+            "shortcode": "SIM20261020002",
+            "url": null,
+            "media_type": "reel",
+            "source": "simulated",
+            "post_age_days": 27,
+            "likes": 0,
+            "comments": 0,
+            "likes_total": 239,
+            "comments_total": 11,
+            "saves": 0,
+            "shares": 0,
+            "impressions": 35,
+            "reach": 25,
+            "clicks": {
+              "profile_visits": 0,
+              "link_in_bio": 0,
+              "tagged_account": 0
+            },
+            "plays": 49
+          },
+          {
+            "shortcode": "SIM20261019001",
+            "url": null,
+            "media_type": "reel",
+            "source": "simulated",
+            "post_age_days": 28,
+            "likes": 0,
+            "comments": 0,
+            "likes_total": 528,
+            "comments_total": 26,
+            "saves": 0,
+            "shares": 0,
+            "impressions": 6,
+            "reach": 5,
+            "clicks": {
+              "profile_visits": 0,
+              "link_in_bio": 0,
+              "tagged_account": 0
+            },
+            "plays": 8
+          },
+          {
+            "shortcode": "DaR5gYaEVSL",
+            "url": "https://www.instagram.com/nrw.bank/reel/DaR5gYaEVSL/",
+            "media_type": "reel",
+            "source": "observed",
+            "post_age_days": 138,
+            "likes": 4,
+            "comments": 1,
+            "likes_total": 1235,
+            "comments_total": 62,
+            "saves": 0,
+            "shares": 0,
+            "impressions": 61,
+            "reach": 43,
+            "clicks": {
+              "profile_visits": 1,
+              "link_in_bio": 0,
+              "tagged_account": 0
+            },
+            "plays": 86
+          },
+          {
+            "shortcode": "DTM0fmrDFsv",
+            "url": "https://www.instagram.com/nrw.bank/p/DTM0fmrDFsv/",
+            "media_type": "photo",
+            "source": "observed",
+            "post_age_days": 314,
+            "likes": 1,
+            "comments": 0,
+            "likes_total": 441,
+            "comments_total": 22,
+            "saves": 0,
+            "shares": 0,
+            "impressions": 44,
+            "reach": 35,
+            "clicks": {
+              "profile_visits": 0,
+              "link_in_bio": 0,
+              "tagged_account": 0
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
