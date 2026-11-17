@@ -285,12 +285,12 @@ final readonly class ClickStreamTools implements McpCapabilityInterface
         ),
         outputSchema: self::ACCOUNT_LIST_SCHEMA,
     )]
-    public function listTrackingAccounts(): ToolResult
+    public function listTrackingAccounts(): array
     {
         try {
-            return ToolResult::success(['accounts' => $this->streamService->getAccounts()]);
+            return ['accounts' => $this->streamService->getAccounts()];
         } catch (\Throwable $e) {
-            return ToolResult::failure($e);
+            return ['error' => $e];
         }
     }
 
@@ -319,20 +319,20 @@ final readonly class ClickStreamTools implements McpCapabilityInterface
         string $timeframe = Timeframe::DEFAULT_PRESET,
         ?string $from = null,
         ?string $to = null,
-    ): ToolResult {
+    ): array {
         try {
             $channels = Channel::listFromParameter($channel);
             $accountId = $this->streamService->resolveAccount($account);
             $range = $this->streamService->resolveTimeframe($accountId, $timeframe, $from, $to);
 
-            return ToolResult::success([
+            return [
                 'account' => $accountId,
                 'channels' => array_map(static fn (Channel $c): string => $c->value, $channels),
                 'timeframe' => $range->toArray(),
                 'days' => $this->streamService->getClickStream($accountId, $range, $channels),
-            ]);
+            ];
         } catch (\Throwable $e) {
-            return ToolResult::failure($e);
+            return ['error' => $e];
         }
     }
 
@@ -361,19 +361,19 @@ final readonly class ClickStreamTools implements McpCapabilityInterface
         string $timeframe = Timeframe::DEFAULT_PRESET,
         ?string $from = null,
         ?string $to = null,
-    ): ToolResult {
+    ): array {
         try {
             $channels = Channel::listFromParameter($channel);
             $accountId = $this->streamService->resolveAccount($account);
             $range = $this->streamService->resolveTimeframe($accountId, $timeframe, $from, $to);
 
-            return ToolResult::success([
+            return [
                 'account' => $accountId,
                 'timeframe' => $range->toArray(),
                 'channels' => $this->streamService->getChannelSummary($accountId, $range, $channels),
-            ]);
+            ];
         } catch (\Throwable $e) {
-            return ToolResult::failure($e);
+            return ['error' => $e];
         }
     }
 
@@ -402,19 +402,19 @@ final readonly class ClickStreamTools implements McpCapabilityInterface
         string $timeframe = Timeframe::DEFAULT_PRESET,
         ?string $from = null,
         ?string $to = null,
-    ): ToolResult {
+    ): array {
         try {
             $channels = Channel::listFromParameter($channel);
             $accountId = $this->streamService->resolveAccount($account);
             $range = $this->streamService->resolveTimeframe($accountId, $timeframe, $from, $to);
 
-            return ToolResult::success([
+            return [
                 'account' => $accountId,
                 'timeframe' => $range->toArray(),
                 'channels' => $this->streamService->getHourlyDistribution($accountId, $range, $channels),
-            ]);
+            ];
         } catch (\Throwable $e) {
-            return ToolResult::failure($e);
+            return ['error' => $e];
         }
     }
 
@@ -447,17 +447,17 @@ final readonly class ClickStreamTools implements McpCapabilityInterface
         ?string $section = null,
         string $sortBy = 'pageviews',
         int $limit = 25,
-    ): ToolResult {
+    ): array {
         try {
             $accountId = $this->streamService->resolveAccount($account);
             $range = $this->streamService->resolveTimeframe($accountId, $timeframe, $from, $to);
 
-            return ToolResult::success([
+            return [
                 'account' => $accountId,
                 'timeframe' => $range->toArray(),
-            ] + $this->streamService->getWebsitePageStatistics($accountId, $range, $section, $sortBy, $limit));
+            ] + $this->streamService->getWebsitePageStatistics($accountId, $range, $section, $sortBy, $limit);
         } catch (\Throwable $e) {
-            return ToolResult::failure($e);
+            return ['error' => $e];
         }
     }
 
@@ -490,17 +490,17 @@ final readonly class ClickStreamTools implements McpCapabilityInterface
         ?string $mediaType = null,
         string $sortBy = 'likes',
         int $limit = 25,
-    ): ToolResult {
+    ): array {
         try {
             $accountId = $this->streamService->resolveAccount($account);
             $range = $this->streamService->resolveTimeframe($accountId, $timeframe, $from, $to);
 
-            return ToolResult::success([
+            return [
                 'account' => $accountId,
                 'timeframe' => $range->toArray(),
-            ] + $this->streamService->getInstagramPostStatistics($accountId, $range, $mediaType, $sortBy, $limit));
+            ] + $this->streamService->getInstagramPostStatistics($accountId, $range, $mediaType, $sortBy, $limit);
         } catch (\Throwable $e) {
-            return ToolResult::failure($e);
+            return ['error' => $e];
         }
     }
 }
