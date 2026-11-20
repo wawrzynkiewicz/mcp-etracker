@@ -32,6 +32,10 @@ final class IbexaMcpEtrackerExtension extends Extension
             'name' => 'NRW.BANK (simulated, 1-day sample)',
             'data_file' => self::BUNDLED_DATA_DIR . '/nrwbank_clickstream_1day.json',
         ],
+        'eram' => [
+            'name' => 'Eram (simulated, 3 months)',
+            'data_file' => self::BUNDLED_DATA_DIR . '/eram_clickstream_3months.json',
+        ],
     ];
 
     public function getAlias(): string

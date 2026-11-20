@@ -1,184 +1,165 @@
 #!/usr/bin/env python3
-"""Simulated click-stream generator for nrwbank.de and instagram.com/nrw.bank.
+"""Profile-driven simulated click-stream generator (website + Instagram), etracker-style.
 
-All metrics are SIMULATED. Page URLs and Instagram post shortcodes were taken
-from the live site/profile on 2026-11-17; publish dates marked "estimated"
-are assumptions.
+A profile (JSON, see profiles/) describes one brand: tracked pages, click targets, traffic
+shape, seasonal events and the Instagram account with its observed posts. All metrics are
+SIMULATED; only page URLs and observed post shortcodes/dates come from the live channels.
 
-Usage: python3 generate.py --end 2026-11-16 --days 1 --out clickstream_1day.json
+Usage:
+  python3 generate.py --profile profiles/eram.json --end 2026-11-19 --days 92 --out eram_clickstream_3months.json
 """
 import argparse, json, math, random
 from datetime import date, datetime, timedelta, timezone
 
-BASE = "https://www.nrwbank.de"
+TRACK_DAYS = 30  # non-pinned posts are tracked for 30 days after publishing
 
-# (path, title, section, relative daily weight)
-PAGES = [
-    ("/de/", "Startseite", "home", 100),
-    ("/de/foerderung/foerderprodukte/", "Förderprodukte", "foerderung", 60),
-    ("/de/privatpersonen/wohneigentum/", "Wohneigentum fördern", "privatpersonen", 45),
-    ("/de/privatpersonen/", "Privatpersonen", "privatpersonen", 30),
-    ("/de/gruender/", "Gründer", "gruender", 28),
-    ("/de/unternehmen/", "Unternehmen", "unternehmen", 26),
-    ("/de/foerderung/konditionen/", "Konditionen", "foerderung", 24),
-    ("/de/info-und-service/tools-und-rechner/", "Tools und Rechner", "service", 18),
-    ("/de/info-und-service/tools-und-rechner/chancenpruefer/", "Chancenprüfer", "service", 14),
-    ("/de/privatpersonen/wohneigentum-gestalten/wohneigentum-modernisieren/", "Wohneigentum modernisieren", "privatpersonen", 16),
-    ("/de/unternehmen/investitionen-im-mittelstand/digitalisierung/", "Digitalisierung im Mittelstand", "unternehmen", 10),
-    ("/de/unternehmen/wohnwirtschaft/wohnungen-bauen/", "Wohnungen bauen", "unternehmen", 12),
-    ("/de/oeffentliche-kunden/", "Öffentliche Kunden", "oeffentliche-kunden", 9),
-    ("/de/foerderung/formulare/", "Formulare", "foerderung", 15),
-    ("/de/die-nrw-bank/karriere/", "Karriere", "nrw-bank", 17),
-    ("/de/die-nrw-bank/investor-relations/", "Investor Relations", "nrw-bank", 6),
-    ("/de/info-und-service/veranstaltungen/", "Veranstaltungen", "service", 8),
-    ("/de/info-und-service/presseinformationen/", "Presseinformationen", "presse", 5),
-    ("/de/info-und-service/presseinformationen/2026/261112_PI_deepinvoice.html", "PI: deepinvoice", "presse", 3),
-    ("/de/info-und-service/presseinformationen/2026/261109_PI_SRTD-Biotech.html", "PI: SRTD Biotech", "presse", 2),
-    ("/de/mut-der-gruendungspreis-nrw/", "MUT – Der Gründungspreis NRW", "gruender", 5),
-    ("/de/info-und-service/kontakt/", "Kontakt", "service", 11),
-]
 
-# Clickable elements tracked per page (CTA / link categories)
-CLICK_TARGETS = ["navigation", "cta_foerderprodukt", "download_pdf", "rechner_start", "kontakt", "external_link"]
-
-# Instagram posts seen on the profile (newest first, pinned ones flagged)
-IG_POSTS = [
-    ("DaR5gYaEVSL", "reel", "2026-07-01", False, True),
-    ("DTM0fmrDFsv", "photo", "2026-01-06", False, True),
-    ("DfrGS2mkw__", "reel", "2026-11-12", False, False),
-    ("DfpPZlqikRE", "photo", "2026-11-12", False, False),
-    ("DfoqtT8Co8c", "photo", "2026-11-12", False, False),
-    ("Dfmc9d9jfZY", "photo", "2026-11-11", False, False),
-    ("DfkFuWoj1Aj", "photo", "2026-11-10", True, False),
-    ("DfhVe-2DzAB", "photo", "2026-11-07", True, False),
-    ("Dfg8-q6EUli", "photo", "2026-11-06", True, False),
-    ("Dfbpn_BFB4d", "reel", "2026-11-05", True, False),
-    ("DfZ6qRCiPIM", "reel", "2026-11-04", True, False),
-    ("DfUKviTACn1", "photo", "2026-11-03", True, False),
-]
-FOLLOWERS_START = 5309
-
-# Hourly traffic profile (CET), sums ~1
-HOURLY = [0.6,0.4,0.3,0.3,0.4,0.8,1.6,3.0,5.2,6.8,7.4,7.2,6.0,6.4,6.9,6.6,6.0,5.0,4.2,3.8,3.6,3.1,2.2,1.2]
-HOURLY = [h / sum(HOURLY) for h in HOURLY]
-IG_HOURLY = [0.5,0.3,0.2,0.2,0.3,0.8,2.5,4.5,5.0,4.2,4.0,4.6,6.5,5.5,4.4,4.2,4.8,6.0,7.4,8.2,8.6,7.5,5.5,2.8]
-IG_HOURLY = [h / sum(IG_HOURLY) for h in IG_HOURLY]
+def norm(weights):
+    s = sum(weights)
+    return [w / s for w in weights]
 
 
 def split(total, weights, rng):
-    """Split integer total over weights with noise; result sums to total."""
+    """Split an integer total over weights with noise; the parts sum to total."""
     noisy = [w * rng.uniform(0.85, 1.15) for w in weights]
-    s = sum(noisy)
+    s = sum(noisy) or 1
     raw = [total * n / s for n in noisy]
     out = [int(r) for r in raw]
-    rest = total - sum(out)
-    for i in sorted(range(len(raw)), key=lambda i: raw[i] - out[i], reverse=True)[:rest]:
+    for i in sorted(range(len(raw)), key=lambda i: raw[i] - out[i], reverse=True)[:total - sum(out)]:
         out[i] += 1
     return out
 
 
-def day_factor(d):
-    wd = d.weekday()
-    return [1.10, 1.05, 1.0, 0.98, 0.85, 0.42, 0.38][wd]
+def in_range(d, ev):
+    return date.fromisoformat(ev["from"]) <= d <= date.fromisoformat(ev["to"])
 
 
-def website_day(d, rng):
-    base_pv = 9500
-    pageviews = int(base_pv * day_factor(d) * rng.uniform(0.9, 1.1))
-    sessions = int(pageviews / rng.uniform(2.6, 3.1))
-    visitors = int(sessions * rng.uniform(0.80, 0.88))
-    page_pv = split(pageviews, [p[3] for p in PAGES], rng)
+# --------------------------------------------------------------------------- website
+
+def website_day(d, p, rng):
+    w = p["website"]
+    factor = w["weekday_factors"][d.weekday()]
+    for ev in w.get("events", []):
+        if in_range(d, ev) and not ev.get("match"):
+            factor *= ev["factor"]
+    pageviews = int(w["base_pageviews"] * factor * rng.uniform(0.9, 1.1))
+    sessions = int(pageviews / rng.uniform(*w["pages_per_session"]))
+    visitors = int(sessions * rng.uniform(*w["visitors_per_session"]))
+
+    weights = []
+    for path, _, _, weight in w["pages"]:
+        for ev in w.get("events", []):
+            if ev.get("match") and ev["match"] in path and in_range(d, ev):
+                weight *= ev["factor"]
+        weights.append(weight)
+    page_pv = split(pageviews, weights, rng)
+
+    targets = w["click_targets"]
     pages, total_clicks = [], 0
-    for (path, title, section, _), pv in zip(PAGES, page_pv):
-        clicks = int(pv * rng.uniform(0.9, 1.6))
+    for (path, title, section, _), pv in zip(w["pages"], page_pv):
+        cpp = w.get("clicks_per_pageview_by_section", {}).get(section, w["clicks_per_pageview"])
+        clicks = int(pv * rng.uniform(*cpp))
         total_clicks += clicks
-        tgt_w = [5, 3 if section in ("foerderung", "privatpersonen", "unternehmen", "gruender") else 0.5,
-                 2 if section in ("foerderung", "presse", "nrw-bank") else 0.6,
-                 2 if "rechner" in path or "chancen" in path else 0.3,
-                 1.2, 0.5]
+        tw = w["target_weights"].get(section, w["target_weights"]["default"])
         pages.append({
-            "url": BASE + path,
+            "url": "https://" + w["domain"] + path,
             "title": title,
             "section": section,
             "pageviews": pv,
             "unique_pageviews": int(pv * rng.uniform(0.72, 0.86)),
             "clicks": clicks,
-            "clicks_by_target": dict(zip(CLICK_TARGETS, split(clicks, tgt_w, rng))),
-            "avg_time_on_page_s": round(rng.uniform(25, 140), 1),
+            "clicks_by_target": dict(zip(targets, split(clicks, tw, rng))),
+            "avg_time_on_page_s": round(rng.uniform(*w["time_on_page_s"].get(section, w["time_on_page_s"]["default"])), 1),
             "exit_rate": round(rng.uniform(0.15, 0.55), 3),
         })
-    pages.sort(key=lambda p: p["pageviews"], reverse=True)
-    hourly = split(total_clicks, HOURLY, rng)
-    src = split(sessions, [52, 21, 14, 6, 4, 3], rng)
-    dev = split(sessions, [58, 37, 5], rng)
+    pages.sort(key=lambda x: x["pageviews"], reverse=True)
+
+    src_names = list(w["traffic_sources"].keys())
+    src = split(sessions, list(w["traffic_sources"].values()), rng)
+    social_idx = src_names.index("social")
     return {
         "totals": {
             "pageviews": pageviews,
             "sessions": sessions,
             "unique_visitors": visitors,
             "clicks": total_clicks,
-            "bounce_rate": round(rng.uniform(0.38, 0.48), 3),
-            "avg_session_duration_s": round(rng.uniform(140, 210), 1),
+            "bounce_rate": round(rng.uniform(*w["bounce_rate"]), 3),
+            "avg_session_duration_s": round(rng.uniform(*w["session_duration_s"]), 1),
         },
-        "traffic_sources": dict(zip(["organic_search", "direct", "referral", "social", "paid_search", "email"], src)),
-        "social_referrals": {"instagram": int(src[3] * rng.uniform(0.35, 0.5))},
-        "devices": dict(zip(["desktop", "mobile", "tablet"], dev)),
-        "clicks_by_hour": [{"hour": h, "clicks": c} for h, c in enumerate(hourly)],
+        "traffic_sources": dict(zip(src_names, src)),
+        "social_referrals": {"instagram": int(src[social_idx] * rng.uniform(*w["instagram_share_of_social"]))},
+        "devices": dict(zip(w["devices"].keys(), split(sessions, list(w["devices"].values()), rng))),
+        "clicks_by_hour": [{"hour": h, "clicks": c} for h, c in enumerate(split(total_clicks, norm(w["hourly"]), rng))],
         "pages": pages,
     }
 
 
-TRACK_DAYS = 30  # non-pinned posts are tracked for 30 days after publishing
-TOPICS = ["Förderprogramm vorgestellt", "Gründer:innen-Porträt", "Veranstaltungshinweis", "Karriere bei der NRW.BANK",
-          "Finanzwissen-Tipp", "Wohneigentum fördern", "Team & Kultur", "Pressemitteilung", "Kunst bei der NRW.BANK",
-          "Nachhaltigkeit", "Innovationspartner", "Event-Recap"]
+# --------------------------------------------------------------------------- instagram
 
-
-def build_posts(start, rng):
+def build_posts(p, start, end, rng):
     """Observed posts plus simulated posts filling the window before the oldest observed one."""
-    posts = [{"shortcode": c, "media_type": t, "published": d, "pinned": pin,
-              "source": "observed" + ("_date_estimated" if est else "")}
-             for c, t, d, est, pin in IG_POSTS]
-    first_observed = min(date.fromisoformat(p["published"]) for p in posts if not p["pinned"])
+    ig = p["instagram"]
+    posts = []
+    for o in ig["observed_posts"]:
+        if date.fromisoformat(o["published"]) > end:
+            continue  # published after the stream ends
+        posts.append({"shortcode": o["shortcode"], "media_type": o["media_type"], "published": o["published"],
+                      "pinned": o.get("pinned", False),
+                      "source": "observed" + ("_date_estimated" if o.get("date_estimated") else ""),
+                      **({"topic": o["topic"]} if o.get("topic") else {})})
+    first_observed = min(date.fromisoformat(x["published"]) for x in posts if not x["pinned"])
+
+    media, mix = list(ig["media_mix"].keys()), list(ig["media_mix"].values())
+    topics = ig["topics"]
     d, n = start - timedelta(days=TRACK_DAYS), 0
     while d < first_observed:
-        # ~4 posts/week on weekdays, occasionally 2 per day
-        if d.weekday() < 5 and rng.random() < 0.8:
-            for _ in range(2 if rng.random() < 0.12 else 1):
-                n += 1
-                posts.append({"shortcode": f"SIM{d.strftime('%Y%m%d')}{n:03d}",
-                              "media_type": "reel" if rng.random() < 0.3 else ("carousel" if rng.random() < 0.3 else "photo"),
-                              "published": d.isoformat(), "pinned": False, "source": "simulated",
-                              "topic": rng.choice(TOPICS)})
+        chance = ig["post_probability"][d.weekday()]
+        count = (1 if rng.random() < chance else 0) + (1 if rng.random() < ig.get("double_post_probability", 0) else 0)
+        for _ in range(count):
+            n += 1
+            active = [t for t in topics if t.get("from", "0000") <= d.isoformat() <= t.get("to", "9999")]
+            topic = rng.choices([t["name"] for t in active], [t["weight"] for t in active])[0]
+            posts.append({"shortcode": f"SIM{d.strftime('%Y%m%d')}{n:03d}",
+                          "media_type": rng.choices(media, mix)[0],
+                          "published": d.isoformat(), "pinned": False, "source": "simulated", "topic": topic})
         d += timedelta(days=1)
-    posts.sort(key=lambda p: p["published"], reverse=True)
-    for p in posts:
-        p["url"] = (None if p["source"] == "simulated" else
-                    f"https://www.instagram.com/nrw.bank/{'reel' if p['media_type'] == 'reel' else 'p'}/{p['shortcode']}/")
+
+    posts.sort(key=lambda x: x["published"], reverse=True)
+    for x in posts:
+        x["url"] = (None if x["source"] == "simulated" else
+                    f"{ig['profile_url']}{'reel' if x['media_type'] == 'reel' else 'p'}/{x['shortcode']}/")
     return posts
 
 
-def ig_post_day(post, d, rng, state):
-    code, ptype, pub, pinned = post["shortcode"], post["media_type"], post["published"], post["pinned"]
-    age = (d - date.fromisoformat(pub)).days
-    if age < 0 or (age > TRACK_DAYS and not pinned):
+def expected_likes(ig, age, pinned, mult):
+    e = ig["engagement"]
+    return (math.exp(-age / e["decay_days"]) * e["day0_likes"] + (e["pinned_baseline"] if pinned else e["tail_baseline"])) * mult
+
+
+def ig_post_day(post, d, ig, rng, state):
+    age = (d - date.fromisoformat(post["published"])).days
+    if age < 0 or (age > TRACK_DAYS and not post["pinned"]):
         return None
-    reach_mult = {"reel": 1.8, "carousel": 1.25}.get(ptype, 1.0) * state.setdefault("q_" + code, rng.uniform(0.6, 1.6))
-    # engagement decays with post age; pinned posts keep a small baseline
-    decay = math.exp(-age / 2.5) * 70 + (2.0 if pinned else 0.4)
-    likes = max(0, int(decay * reach_mult * rng.uniform(0.6, 1.4)))
-    c = likes * rng.uniform(0.03, 0.10); comments = int(c) + (rng.random() < c - int(c))
+    e = ig["engagement"]
+    code, ptype = post["shortcode"], post["media_type"]
+    boost = next((t for t in ig["topics"] if t["name"] == post.get("topic")), {})
+    mult = e["media_multiplier"].get(ptype, 1.0) * boost.get("likes", 1.0) \
+        * state.setdefault("q_" + code, rng.uniform(*e["quality_range"]))
+
+    likes = max(0, int(expected_likes(ig, age, post["pinned"], mult) * rng.uniform(0.7, 1.3)))
+    c = likes * rng.uniform(*e["comment_rate"]) * boost.get("comments", 1.0)
+    comments = int(c) + (rng.random() < c - int(c))
+
     st = state.setdefault(code, {"likes": 0, "comments": 0, "seeded": False})
-    if not st["seeded"]:
-        st["seeded"] = True  # seed lifetime totals for posts older than the window
-        for a in range(age):
-            dd = math.exp(-a / 2.5) * 70 + (2.0 if pinned else 0.4)
-            st["likes"] += int(dd * reach_mult)
-        st["comments"] = int(st["likes"] * 0.05)
+    if not st["seeded"]:  # lifetime totals accumulated before the stream window
+        st["seeded"] = True
+        st["likes"] = sum(int(expected_likes(ig, a, post["pinned"], mult)) for a in range(age))
+        st["comments"] = int(st["likes"] * sum(e["comment_rate"]) / 2 * boost.get("comments", 1.0))
     st["likes"] += likes
     st["comments"] += comments
-    impressions = int((likes * rng.uniform(9, 14)) + rng.randint(5, 40))
-    return {
+
+    impressions = int(likes * rng.uniform(*e["impressions_per_like"]) + rng.randint(5, 60))
+    result = {
         "shortcode": code,
         "url": post["url"],
         "media_type": ptype,
@@ -188,85 +169,99 @@ def ig_post_day(post, d, rng, state):
         "comments": comments,
         "likes_total": st["likes"],
         "comments_total": st["comments"],
-        "saves": int(likes * rng.uniform(0.03, 0.12)),
-        "shares": int(likes * rng.uniform(0.02, 0.10)),
+        "saves": int(likes * rng.uniform(*e["save_rate"])),
+        "shares": int(likes * rng.uniform(*e["share_rate"])),
         "impressions": impressions,
         "reach": int(impressions * rng.uniform(0.7, 0.85)),
         "clicks": {
-            "profile_visits": int(likes * rng.uniform(0.15, 0.35)),
-            "link_in_bio": int(likes * rng.uniform(0.03, 0.08)),
-            "tagged_account": int(likes * rng.uniform(0.0, 0.05)),
+            "profile_visits": int(likes * rng.uniform(*e["profile_visit_rate"])),
+            "link_in_bio": int(likes * rng.uniform(*e["link_click_rate"])),
+            "tagged_account": int(likes * rng.uniform(0.0, 0.04)),
         },
-        **({"plays": int(impressions * rng.uniform(1.1, 1.6))} if ptype == "reel" else {}),
     }
+    if ptype == "reel":
+        result["plays"] = int(impressions * rng.uniform(1.1, 1.6))
+    return result
 
 
-def instagram_day(d, rng, state, catalog):
-    posts = [p for p in (ig_post_day(x, d, rng, state) for x in catalog) if p]
-    likes = sum(p["likes"] for p in posts)
-    comments = sum(p["comments"] for p in posts)
-    clicks = sum(sum(p["clicks"].values()) for p in posts)
-    state["followers"] = state.get("followers", state["followers_start"]) + rng.randint(-2, 6)
+def instagram_day(d, ig, catalog, rng, state):
+    posts = [x for x in (ig_post_day(c, d, ig, rng, state) for c in catalog) if x]
+    likes = sum(x["likes"] for x in posts)
+    lo, hi = ig["daily_follower_change"]
+    state["followers"] = state["followers"] + rng.randint(lo, hi)
     return {
         "totals": {
             "followers": state["followers"],
-            "posts_published": sum(1 for p in posts if p["post_age_days"] == 0),
+            "posts_published": sum(1 for x in posts if x["post_age_days"] == 0),
             "likes": likes,
-            "comments": comments,
-            "clicks": clicks,
-            "impressions": sum(p["impressions"] for p in posts),
-            "reach": int(sum(p["reach"] for p in posts) * 0.75),
-            "website_clicks": sum(p["clicks"]["link_in_bio"] for p in posts),
+            "comments": sum(x["comments"] for x in posts),
+            "clicks": sum(sum(x["clicks"].values()) for x in posts),
+            "impressions": sum(x["impressions"] for x in posts),
+            "reach": int(sum(x["reach"] for x in posts) * 0.75),
+            "website_clicks": sum(x["clicks"]["link_in_bio"] for x in posts),
         },
-        "interactions_by_hour": [{"hour": h, "likes": l} for h, l in enumerate(split(likes, IG_HOURLY, rng))],
+        "interactions_by_hour": [{"hour": h, "likes": v} for h, v in enumerate(split(likes, norm(ig["hourly"]), rng))],
         "posts": posts,
     }
 
 
+# --------------------------------------------------------------------------- main
+
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--end", default="2026-11-16")
-    ap.add_argument("--days", type=int, default=1)
+    ap.add_argument("--profile", required=True)
+    ap.add_argument("--end", required=True, help="last day (YYYY-MM-DD)")
+    ap.add_argument("--days", type=int, default=92)
     ap.add_argument("--seed", type=int, default=42)
-    ap.add_argument("--out", default="clickstream.json")
+    ap.add_argument("--out", required=True)
     a = ap.parse_args()
+
+    with open(a.profile, encoding="utf-8") as f:
+        p = json.load(f)
     rng = random.Random(a.seed)
     end = date.fromisoformat(a.end)
     start = end - timedelta(days=a.days - 1)
-    catalog = build_posts(start, random.Random(a.seed + 1))
-    state, days = {}, []
+    ig = p["instagram"]
+    catalog = build_posts(p, start, end, random.Random(a.seed + 1))
+
+    # walk followers so that the last day lands near the observed follower count
+    lo, hi = ig["daily_follower_change"]
+    state = {"followers": ig["followers_observed"] - int((lo + hi) / 2 * a.days)}
+
+    days = []
     for i in range(a.days):
         d = start + timedelta(days=i)
-        state.setdefault("followers_start", FOLLOWERS_START - 2 * a.days)
         days.append({
             "date": d.isoformat(),
             "weekday": d.strftime("%A"),
-            "website": website_day(d, rng),
-            "instagram": instagram_day(d, rng, state, catalog),
+            "website": website_day(d, p, rng),
+            "instagram": instagram_day(d, ig, catalog, rng, state),
         })
+
     doc = {
         "meta": {
-            "stream": "nrwbank_clickstream",
-            "version": "1.0",
+            "stream": p["stream"],
+            "version": "1.1",
             "simulated": True,
             "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
-            "timezone": "Europe/Berlin",
+            "timezone": p.get("timezone", "Europe/Berlin"),
             "period": {"start": start.isoformat(), "end": end.isoformat(), "days": a.days},
             "sources": {
-                "website": {"domain": "www.nrwbank.de", "tracked_pages": len(PAGES)},
-                "instagram": {"account": "@nrw.bank", "profile_url": "https://www.instagram.com/nrw.bank/",
-                               "posts": [p for p in catalog
-                                         if p["pinned"] or date.fromisoformat(p["published"]) >= start - timedelta(days=TRACK_DAYS)]},
+                "website": {"domain": p["website"]["domain"], "tracked_pages": len(p["website"]["pages"]),
+                            "click_targets": p["website"]["click_targets"],
+                            "events": p["website"].get("events", [])},
+                "instagram": {"account": ig["account"], "profile_url": ig["profile_url"],
+                              "followers_observed": ig["followers_observed"],
+                              "posts": [x for x in catalog if x["pinned"]
+                                        or date.fromisoformat(x["published"]) >= start - timedelta(days=TRACK_DAYS)]},
             },
-            "notes": "All metrics are simulated. Page URLs and post shortcodes are real as of 2026-11-17; "
-                     "publish dates for older posts are estimated. Posts with source 'simulated' (shortcode SIM…) "
-                     "are invented to fill the period before the oldest observed post and have no URL.",
+            "notes": p["notes"],
         },
         "days": days,
     }
     with open(a.out, "w", encoding="utf-8") as f:
         json.dump(doc, f, ensure_ascii=False, indent=2)
-    print(f"wrote {a.out}: {a.days} day(s)")
+    print(f"wrote {a.out}: {a.days} day(s), {len(doc['meta']['sources']['instagram']['posts'])} posts")
 
 
 if __name__ == "__main__":

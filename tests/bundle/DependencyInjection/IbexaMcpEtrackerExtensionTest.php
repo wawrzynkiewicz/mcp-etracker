@@ -51,8 +51,13 @@ final class IbexaMcpEtrackerExtensionTest extends TestCase
 
         $service = $container->get(StreamServiceInterface::class);
         self::assertInstanceOf(StreamServiceInterface::class, $service);
-        self::assertSame(['nrwbank', 'nrwbank_sample'], array_column($service->getAccounts(), 'identifier'));
+        self::assertSame(['nrwbank', 'nrwbank_sample', 'eram'], array_column($service->getAccounts(), 'identifier'));
         self::assertSame(92, $service->getAccount('nrwbank')['trackedPeriod']['days']);
+
+        $eram = $service->getAccount('eram');
+        self::assertSame(['from' => '2026-08-20', 'to' => '2026-11-19', 'days' => 92], $eram['trackedPeriod']);
+        self::assertSame('Europe/Paris', $eram['timezone']);
+        self::assertSame(['www.eram.fr', '@eram_officiel'], array_column($eram['channels'], 'handle'));
     }
 
     /**

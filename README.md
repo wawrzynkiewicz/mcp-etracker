@@ -8,7 +8,7 @@ This package simulates an **etracker** analytics service as MCP tools for `ibexa
 click-stream statistics of a tracked **website** and **Instagram** channel per tracking account.
 
 > All statistics shipped with the bundle are **simulated**. Page URLs and Instagram post shortcodes
-> of nrwbank.de / @nrw.bank were taken from the live site on 2026-11-17; posts with
+> were taken from the live channels (nrwbank.de / @nrw.bank on 2026-11-17, eram.fr / @eram_officiel on 2026-11-20); posts with
 > `source: simulated` (shortcode `SIM…`) are invented and have no URL.
 
 ## Architecture
@@ -62,6 +62,11 @@ Without configuration, two bundled accounts are available:
 |---|---|---|
 | `nrwbank` (default) | `src/bundle/Resources/data/nrwbank_clickstream_3months.json` | 2026-08-17 – 2026-11-16 (92 days) |
 | `nrwbank_sample` | `src/bundle/Resources/data/nrwbank_clickstream_1day.json` | 2026-11-16 (1 day) |
+| `eram` | `src/bundle/Resources/data/eram_clickstream_3months.json` | 2026-08-20 – 2026-11-19 (92 days) |
+
+`nrwbank` is www.nrwbank.de and @nrw.bank (public funding bank, German). `eram` is www.eram.fr and
+@eram_officiel (French shoe retailer, ~205K followers), with shop click targets (product click, add to
+cart, checkout start, …), seasonal events, and the account timezone Europe/Paris.
 
 Configure your own accounts (this replaces the bundled ones):
 
@@ -74,8 +79,14 @@ ibexa_mcp_etracker:
             data_file: '%kernel.project_dir%/var/etracker/acme.json'
 ```
 
-New data sets can be generated with `src/bundle/Resources/data/generate.py`
-(`python3 generate.py --end 2026-11-16 --days 92 --seed 42 --out acme.json`).
+New data sets are generated from a brand profile (pages, click targets, traffic shape, seasonal events,
+Instagram account and observed posts) with `src/bundle/Resources/data/generate.py`:
+
+```bash
+python3 generate.py --profile profiles/eram.json --end 2026-11-19 --days 92 --seed 42 --out eram_clickstream_3months.json
+```
+
+The NRW.BANK files were produced by the older, single-brand `generate_nrwbank.py`.
 
 ## MCP tools
 

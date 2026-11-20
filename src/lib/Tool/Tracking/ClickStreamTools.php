@@ -47,7 +47,7 @@ final readonly class ClickStreamTools implements McpCapabilityInterface
             'pageviews' => ['type' => 'integer'],
             'sessions' => ['type' => 'integer'],
             'uniqueVisitors' => ['type' => 'integer'],
-            'clicks' => ['type' => 'integer', 'description' => 'Tracked clicks on links, CTAs, downloads, calculators etc.'],
+            'clicks' => ['type' => 'integer', 'description' => 'Tracked clicks on links, CTAs, downloads, calculators, add-to-cart etc.'],
             'bounceRate' => ['type' => 'number', 'description' => 'Share of single-page sessions (0-1).'],
             'avgSessionDurationSeconds' => ['type' => 'number'],
             'instagramReferrals' => ['type' => 'integer', 'description' => 'Sessions referred by Instagram.'],
@@ -387,7 +387,7 @@ final readonly class ClickStreamTools implements McpCapabilityInterface
     #[McpTool(
         servers: [self::SERVER],
         name: 'get_hourly_click_distribution',
-        description: 'Returns the distribution over the 24 hours of the day (Europe/Berlin), summed over the timeframe: website clicks and/or Instagram likes per hour, with each hour\'s share.',
+        description: 'Returns the distribution over the 24 hours of the day (in the account timezone), summed over the timeframe: website clicks and/or Instagram likes per hour, with each hour\'s share.',
         annotations: new ToolAnnotations(
             readOnlyHint: true,
             destructiveHint: false,
@@ -423,14 +423,14 @@ final readonly class ClickStreamTools implements McpCapabilityInterface
      * @param string $timeframe Preset counted back from the last tracked day: 'last_day' | 'last_7_days' | 'last_14_days' | 'last_30_days' | 'last_90_days' | 'all'. Ignored when from/to is given. Defaults to 'last_30_days'.
      * @param string|null $from Custom start date (YYYY-MM-DD, inclusive). Overrides timeframe.
      * @param string|null $to Custom end date (YYYY-MM-DD, inclusive). Overrides timeframe.
-     * @param string|null $section Only pages of this site section, e.g. 'foerderung', 'privatpersonen', 'unternehmen', 'gruender', 'service', 'presse', 'nrw-bank', 'home'.
+     * @param string|null $section Only pages of this site section. nrwbank: 'home', 'foerderung', 'privatpersonen', 'unternehmen', 'gruender', 'service', 'presse', 'nrw-bank'. eram: 'home', 'femme', 'homme', 'enfant', 'sacs-accessoires', 'nouveautes', 'outlet', 'collections', 'marques', 'produit', 'panier', 'compte', 'service'.
      * @param string $sortBy Sort (descending) by: 'pageviews' | 'clicks' | 'ctr' | 'timeOnPage'. Defaults to 'pageviews'.
      * @param int $limit Maximum number of pages to return (1-200). Defaults to 25.
      */
     #[McpTool(
         servers: [self::SERVER],
         name: 'get_website_page_statistics',
-        description: 'Returns per-page website statistics aggregated over a timeframe: pageviews, unique pageviews, clicks, click-through rate, clicks by target (navigation, CTA, PDF download, calculator, contact, external link), time on page and exit rate.',
+        description: 'Returns per-page website statistics aggregated over a timeframe: pageviews, unique pageviews, clicks, click-through rate, clicks by target (account-specific, e.g. navigation, CTA, PDF download, product click, add to cart, checkout start), time on page and exit rate.',
         annotations: new ToolAnnotations(
             readOnlyHint: true,
             destructiveHint: false,

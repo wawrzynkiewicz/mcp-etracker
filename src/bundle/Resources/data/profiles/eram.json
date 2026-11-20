@@ -1,0 +1,811 @@
+{
+  "stream": "eram_clickstream",
+  "timezone": "Europe/Paris",
+  "notes": "All metrics are simulated. Page URLs and Instagram post shortcodes/dates were observed on 2026-11-20 (www.eram.fr, @eram_officiel, ~205K followers). Posts with source 'simulated' (shortcode SIM…) are invented to fill the period before the oldest observed post and have no URL. Seasonal events are assumptions.",
+  "website": {
+    "domain": "www.eram.fr",
+    "base_pageviews": 55000,
+    "weekday_factors": [
+      1.0,
+      0.95,
+      0.98,
+      0.97,
+      1.0,
+      1.08,
+      1.15
+    ],
+    "pages_per_session": [
+      3.6,
+      4.6
+    ],
+    "visitors_per_session": [
+      0.78,
+      0.86
+    ],
+    "bounce_rate": [
+      0.33,
+      0.42
+    ],
+    "session_duration_s": [
+      190,
+      290
+    ],
+    "instagram_share_of_social": [
+      0.45,
+      0.6
+    ],
+    "traffic_sources": {
+      "organic_search": 34,
+      "direct": 21,
+      "paid_search": 17,
+      "social": 11,
+      "email": 10,
+      "referral": 7
+    },
+    "devices": {
+      "mobile": 68,
+      "desktop": 27,
+      "tablet": 5
+    },
+    "hourly": [
+      1.2,
+      0.7,
+      0.4,
+      0.3,
+      0.3,
+      0.6,
+      1.4,
+      2.8,
+      3.8,
+      4.2,
+      4.6,
+      5.0,
+      5.8,
+      5.6,
+      4.8,
+      4.6,
+      4.8,
+      5.2,
+      5.9,
+      6.8,
+      7.6,
+      7.9,
+      6.6,
+      3.9
+    ],
+    "click_targets": [
+      "navigation",
+      "product_click",
+      "add_to_cart",
+      "filter_sort",
+      "wishlist_add",
+      "store_locator",
+      "checkout_start",
+      "external_link"
+    ],
+    "target_weights": {
+      "default": [
+        5,
+        1,
+        0.2,
+        0.5,
+        0.3,
+        0.4,
+        0.1,
+        0.3
+      ],
+      "home": [
+        5,
+        4,
+        0.3,
+        0.3,
+        0.4,
+        0.6,
+        0.05,
+        0.4
+      ],
+      "femme": [
+        2.5,
+        6,
+        0.6,
+        2.5,
+        0.8,
+        0.2,
+        0.05,
+        0.1
+      ],
+      "homme": [
+        2.5,
+        6,
+        0.6,
+        2.5,
+        0.8,
+        0.2,
+        0.05,
+        0.1
+      ],
+      "enfant": [
+        2.5,
+        6,
+        0.6,
+        2.5,
+        0.8,
+        0.2,
+        0.05,
+        0.1
+      ],
+      "sacs-accessoires": [
+        2.5,
+        6,
+        0.6,
+        2.5,
+        0.8,
+        0.2,
+        0.05,
+        0.1
+      ],
+      "nouveautes": [
+        2.5,
+        6,
+        0.6,
+        2.5,
+        0.8,
+        0.2,
+        0.05,
+        0.1
+      ],
+      "outlet": [
+        2.5,
+        6,
+        0.6,
+        2.5,
+        0.8,
+        0.2,
+        0.05,
+        0.1
+      ],
+      "collections": [
+        2.5,
+        6,
+        0.6,
+        2.5,
+        0.8,
+        0.2,
+        0.05,
+        0.1
+      ],
+      "marques": [
+        2.5,
+        6,
+        0.6,
+        2.5,
+        0.8,
+        0.2,
+        0.05,
+        0.1
+      ],
+      "produit": [
+        1.5,
+        1.2,
+        4.5,
+        0.1,
+        1.5,
+        0.8,
+        0.3,
+        0.4
+      ],
+      "panier": [
+        1,
+        0.3,
+        0.2,
+        0.01,
+        0.01,
+        0.2,
+        5,
+        0.2
+      ],
+      "compte": [
+        1.5,
+        3,
+        2.5,
+        0.01,
+        0.5,
+        0.2,
+        0.3,
+        0.1
+      ],
+      "service": [
+        4,
+        0.5,
+        0.01,
+        0.01,
+        0.01,
+        2.5,
+        0.01,
+        1
+      ]
+    },
+    "clicks_per_pageview": [
+      0.9,
+      1.5
+    ],
+    "clicks_per_pageview_by_section": {
+      "femme": [
+        1.3,
+        2.2
+      ],
+      "homme": [
+        1.3,
+        2.2
+      ],
+      "enfant": [
+        1.3,
+        2.2
+      ],
+      "sacs-accessoires": [
+        1.3,
+        2.2
+      ],
+      "nouveautes": [
+        1.3,
+        2.2
+      ],
+      "outlet": [
+        1.3,
+        2.2
+      ],
+      "collections": [
+        1.3,
+        2.2
+      ],
+      "marques": [
+        1.3,
+        2.2
+      ],
+      "produit": [
+        1.0,
+        1.8
+      ],
+      "panier": [
+        0.6,
+        1.1
+      ]
+    },
+    "time_on_page_s": {
+      "default": [
+        25,
+        80
+      ],
+      "produit": [
+        45,
+        130
+      ],
+      "service": [
+        30,
+        110
+      ],
+      "panier": [
+        40,
+        120
+      ]
+    },
+    "pages": [
+      [
+        "/",
+        "Accueil",
+        "home",
+        100
+      ],
+      [
+        "/femme.html",
+        "Femme",
+        "femme",
+        45
+      ],
+      [
+        "/femme/chaussures-femme.html",
+        "Toutes les chaussures femme",
+        "femme",
+        30
+      ],
+      [
+        "/femme/chaussures-femme/boots-bottines.html",
+        "Boots & bottines femme",
+        "femme",
+        28
+      ],
+      [
+        "/femme/chaussures-femme/bottes.html",
+        "Bottes femme",
+        "femme",
+        18
+      ],
+      [
+        "/femme/chaussures-femme/baskets-tennis.html",
+        "Baskets femme",
+        "femme",
+        16
+      ],
+      [
+        "/femme/chaussures-femme/mocassins-slippers.html",
+        "Mocassins, Bateau",
+        "femme",
+        12
+      ],
+      [
+        "/femme/chaussures-femme/ballerines.html",
+        "Ballerines",
+        "femme",
+        10
+      ],
+      [
+        "/femme/chaussures-femme/escarpins.html",
+        "Escarpins",
+        "femme",
+        7
+      ],
+      [
+        "/femme/chaussures-femme/chaussons.html",
+        "Chaussons femme",
+        "femme",
+        9
+      ],
+      [
+        "/femme/chaussures-femme/made-in-france.html",
+        "Fabriqué en France",
+        "femme",
+        5
+      ],
+      [
+        "/nouveautes.html",
+        "Nouveautés",
+        "nouveautes",
+        22
+      ],
+      [
+        "/femme/sacs-et-accessoires/sacs-a-main.html",
+        "Sacs à main",
+        "sacs-accessoires",
+        12
+      ],
+      [
+        "/femme/sacs-et-accessoires/tous-les-sacs.html",
+        "Tous les sacs",
+        "sacs-accessoires",
+        8
+      ],
+      [
+        "/homme.html",
+        "Homme",
+        "homme",
+        20
+      ],
+      [
+        "/homme/chaussures-homme.html",
+        "Toutes les chaussures homme",
+        "homme",
+        12
+      ],
+      [
+        "/homme/chaussures-homme/boots.html",
+        "Boots homme",
+        "homme",
+        10
+      ],
+      [
+        "/homme/chaussures-homme/baskets-tennis.html",
+        "Baskets, Tennis homme",
+        "homme",
+        11
+      ],
+      [
+        "/enfant/toutes-les-chaussures-enfant.html",
+        "Enfant",
+        "enfant",
+        12
+      ],
+      [
+        "/enfant/chaussures-fille.html",
+        "Chaussures fille",
+        "enfant",
+        7
+      ],
+      [
+        "/enfant/chaussures-garcon.html",
+        "Chaussures garçon",
+        "enfant",
+        6
+      ],
+      [
+        "/outlet.html",
+        "Outlet",
+        "outlet",
+        26
+      ],
+      [
+        "/outlet/femme.html",
+        "Outlet femme",
+        "outlet",
+        14
+      ],
+      [
+        "/les-petits-prix.html",
+        "Les petits prix",
+        "collections",
+        10
+      ],
+      [
+        "/femme/tendances-eram/grand-froid.html",
+        "Nos chaussures fourrées",
+        "collections",
+        6
+      ],
+      [
+        "/femme/sacs-et-accessoires/selection-octobre-rose.html",
+        "Sélection Octobre Rose",
+        "collections",
+        1.5
+      ],
+      [
+        "/capsule-de-fetes",
+        "Capsule de fêtes",
+        "collections",
+        1.5
+      ],
+      [
+        "/noel/tenues-de-fetes-eram.html",
+        "Tenues de fêtes",
+        "collections",
+        1.5
+      ],
+      [
+        "/marques/les-marques-femme.html",
+        "Les marques femme",
+        "marques",
+        4
+      ],
+      [
+        "/e01c320141vl003-chelsea-boots-camel-cuir-velours-semelle-crantee.html",
+        "Chelsea boots camel cuir velours",
+        "produit",
+        5
+      ],
+      [
+        "/e01c320141cu001-chelsea-boots-noir-cuir-semelle-crantee.html",
+        "Chelsea boots noir cuir",
+        "produit",
+        6
+      ],
+      [
+        "/e01c310029cu007-botte-marron-cuir-detail-bijou.html",
+        "Botte marron cuir détail bijou",
+        "produit",
+        4
+      ],
+      [
+        "/checkout/cart/",
+        "Mon panier",
+        "panier",
+        14
+      ],
+      [
+        "/wishlist/",
+        "Wishlist",
+        "compte",
+        4
+      ],
+      [
+        "/boutiques",
+        "Nos boutiques",
+        "service",
+        6
+      ],
+      [
+        "/e-reservation",
+        "E-réservation",
+        "service",
+        3
+      ],
+      [
+        "/programme-fidelite",
+        "Programme fidélité",
+        "service",
+        3
+      ],
+      [
+        "/seconde-main",
+        "Seconde main",
+        "service",
+        2
+      ],
+      [
+        "/faq",
+        "FAQ",
+        "service",
+        3
+      ],
+      [
+        "/livraison",
+        "Livraison",
+        "service",
+        3
+      ],
+      [
+        "/retours",
+        "Retours",
+        "service",
+        3
+      ]
+    ],
+    "events": [
+      {
+        "label": "Rentrée scolaire",
+        "from": "2026-08-24",
+        "to": "2026-09-06",
+        "factor": 1.12
+      },
+      {
+        "label": "Rentrée scolaire – enfant",
+        "from": "2026-08-24",
+        "to": "2026-09-06",
+        "factor": 2.0,
+        "match": "/enfant"
+      },
+      {
+        "label": "Octobre Rose",
+        "from": "2026-10-01",
+        "to": "2026-10-31",
+        "factor": 3.0,
+        "match": "octobre-rose"
+      },
+      {
+        "label": "Saison boots",
+        "from": "2026-10-12",
+        "to": "2026-11-19",
+        "factor": 1.5,
+        "match": "boots"
+      },
+      {
+        "label": "Saison bottes",
+        "from": "2026-10-12",
+        "to": "2026-11-19",
+        "factor": 1.4,
+        "match": "bottes"
+      },
+      {
+        "label": "Grand froid",
+        "from": "2026-11-01",
+        "to": "2026-11-19",
+        "factor": 2.0,
+        "match": "grand-froid"
+      },
+      {
+        "label": "Capsule de fêtes",
+        "from": "2026-11-10",
+        "to": "2026-11-19",
+        "factor": 3.0,
+        "match": "fetes"
+      },
+      {
+        "label": "Teasing Black Friday",
+        "from": "2026-11-16",
+        "to": "2026-11-19",
+        "factor": 1.12
+      },
+      {
+        "label": "Teasing Black Friday – outlet",
+        "from": "2026-11-16",
+        "to": "2026-11-19",
+        "factor": 1.5,
+        "match": "outlet"
+      }
+    ]
+  },
+  "instagram": {
+    "account": "@eram_officiel",
+    "profile_url": "https://www.instagram.com/eram_officiel/",
+    "followers_observed": 205000,
+    "daily_follower_change": [
+      -60,
+      180
+    ],
+    "post_probability": [
+      0.9,
+      0.9,
+      0.95,
+      0.9,
+      0.95,
+      0.85,
+      0.8
+    ],
+    "double_post_probability": 0.08,
+    "media_mix": {
+      "reel": 0.55,
+      "photo": 0.25,
+      "carousel": 0.2
+    },
+    "hourly": [
+      1.0,
+      0.6,
+      0.3,
+      0.2,
+      0.2,
+      0.4,
+      1.2,
+      2.6,
+      3.4,
+      3.6,
+      3.8,
+      4.2,
+      5.6,
+      5.4,
+      4.4,
+      4.2,
+      4.6,
+      5.4,
+      6.6,
+      7.8,
+      8.6,
+      8.8,
+      7.2,
+      4.0
+    ],
+    "engagement": {
+      "day0_likes": 650,
+      "decay_days": 1.8,
+      "pinned_baseline": 25,
+      "tail_baseline": 4,
+      "media_multiplier": {
+        "reel": 1.7,
+        "carousel": 1.3,
+        "photo": 1.0
+      },
+      "quality_range": [
+        0.5,
+        1.7
+      ],
+      "comment_rate": [
+        0.008,
+        0.03
+      ],
+      "impressions_per_like": [
+        14,
+        24
+      ],
+      "save_rate": [
+        0.04,
+        0.14
+      ],
+      "share_rate": [
+        0.03,
+        0.12
+      ],
+      "profile_visit_rate": [
+        0.08,
+        0.2
+      ],
+      "link_click_rate": [
+        0.02,
+        0.06
+      ]
+    },
+    "topics": [
+      {
+        "name": "Nouvelle collection",
+        "weight": 18
+      },
+      {
+        "name": "Look du jour",
+        "weight": 16
+      },
+      {
+        "name": "Boots & bottines",
+        "weight": 14
+      },
+      {
+        "name": "Sacs & accessoires",
+        "weight": 9
+      },
+      {
+        "name": "Collab / influence",
+        "weight": 8
+      },
+      {
+        "name": "Coulisses / Made in France",
+        "weight": 8,
+        "likes": 1.2
+      },
+      {
+        "name": "Bons plans / Outlet",
+        "weight": 7
+      },
+      {
+        "name": "Fêtes / capsule",
+        "weight": 6,
+        "from": "2026-11-01",
+        "to": "2026-12-31"
+      },
+      {
+        "name": "Enfant / rentrée",
+        "weight": 6,
+        "from": "2026-08-01",
+        "to": "2026-09-15"
+      },
+      {
+        "name": "Jeu concours",
+        "weight": 5,
+        "likes": 1.8,
+        "comments": 15
+      },
+      {
+        "name": "Octobre Rose",
+        "weight": 3,
+        "likes": 1.3,
+        "from": "2026-09-28",
+        "to": "2026-10-31"
+      }
+    ],
+    "observed_posts": [
+      {
+        "shortcode": "Df68RXIEpHJ",
+        "media_type": "reel",
+        "published": "2026-11-19"
+      },
+      {
+        "shortcode": "Df429PcHAzI",
+        "media_type": "reel",
+        "published": "2026-11-18"
+      },
+      {
+        "shortcode": "Df2b7__F3sf",
+        "media_type": "photo",
+        "published": "2026-11-17"
+      },
+      {
+        "shortcode": "DfzzITUDKjQ",
+        "media_type": "reel",
+        "published": "2026-11-16"
+      },
+      {
+        "shortcode": "Dfwu3oYFwpQ",
+        "media_type": "photo",
+        "published": "2026-11-15"
+      },
+      {
+        "shortcode": "Dft8klYme7E",
+        "media_type": "photo",
+        "published": "2026-11-14"
+      },
+      {
+        "shortcode": "Dfrr6VpOVX-",
+        "media_type": "reel",
+        "published": "2026-11-13"
+      },
+      {
+        "shortcode": "DfpdrAtO9CZ",
+        "media_type": "reel",
+        "published": "2026-11-12"
+      },
+      {
+        "shortcode": "DfmU1YcF5VE",
+        "media_type": "photo",
+        "published": "2026-11-11"
+      },
+      {
+        "shortcode": "DfkZbyDl6aE",
+        "media_type": "photo",
+        "published": "2026-11-10"
+      },
+      {
+        "shortcode": "Dfh4RRMOoaF",
+        "media_type": "reel",
+        "published": "2026-11-09"
+      },
+      {
+        "shortcode": "Df91Et_jEm2",
+        "media_type": "reel",
+        "published": "2026-11-20"
+      }
+    ]
+  }
+}
